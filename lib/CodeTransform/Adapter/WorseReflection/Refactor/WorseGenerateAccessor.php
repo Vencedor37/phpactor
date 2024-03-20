@@ -59,10 +59,9 @@ class WorseGenerateAccessor implements GenerateAccessor
 
     private function formatName(string $name): string
     {
-        if ($this->upperCaseFirst) {
-            $name = ucfirst($name);
-        }
-
+        // Campbell dodgy override to force camelcase method name
+        $name = ucwords(str_replace('_', ' ', $name));
+        $name = str_replace(' ', '', $name);
         return $this->prefix . $name;
     }
 
